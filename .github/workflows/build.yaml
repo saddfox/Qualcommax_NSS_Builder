@@ -2,9 +2,9 @@ name: Build OpenWrt for specific target and release
 
 on:
   workflow_dispatch:
-  push:
-  schedule:
-    - cron: "0 */2 * * *"
+#  push:
+#  schedule:
+#    - cron: "0 */2 * * *"
 
 env:
   REMOTE_REPOSITORY: qosmio/openwrt-ipq
