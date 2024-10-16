@@ -11,7 +11,7 @@ env:
   REMOTE_BRANCH: qualcommax-6.x-nss-wifi
   CONFIG_FILE: ax3600.config
   CUSTOM_FILES_PATH: files/
-  RELEASE_PREFIX: qualcommax-6.x-nss-ath11k-2.12
+  RELEASE_PREFIX: qualcommax-6.x-nss-wifi
   NSS_PACKAGES_REPOSITORY: qosmio/nss-packages
   NSS_PACKAGES_REPOSITORY_BRANCH: NSS-12.5-K6.x
 
@@ -72,10 +72,10 @@ jobs:
       - name: Configure firmware image
         run: |
           mv custom_repo/${{ env.CONFIG_FILE }} .config
-          make defconfig -j$(nproc)
+          make defconfig V=s
 
-      - name: Append CONFIG_RELR=y to target/linux/qualcommax/config-6.6
-        run: echo "CONFIG_RELR=y" >> target/linux/qualcommax/config-6.6
+      # - name: Append CONFIG_RELR=y to target/linux/qualcommax/config-6.6
+      #   run: echo "CONFIG_RELR=y" >> target/linux/qualcommax/config-6.6
 
       - name: Include custom files
         run: |
@@ -83,10 +83,10 @@ jobs:
           mv custom_repo/${{ env.CUSTOM_FILES_PATH }}* ${{ env.CUSTOM_FILES_PATH }}
 
       - name: Download dependencies
-        run: make download V=s -j$(nproc)
+        run: make download -j$(nproc) V=s
 
       - name: Build the firmware image
-        run: make world V=s -j$(nproc)
+        run: make -j$(nproc) V=s
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
