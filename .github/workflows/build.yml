@@ -5,14 +5,14 @@ name: Build
 # All build parameters live in the `env:` block below — it is the one file you edit.
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - 'devices/**'
-      - 'scripts/**'
-      - '.github/workflows/build.yml'
-  schedule:
-    - cron: "0 */2 * * *"
+  # push:
+  #   branches: [main]
+  #   paths:
+  #     - 'devices/**'
+  #     - 'scripts/**'
+  #     - '.github/workflows/build.yml'
+  # schedule:
+  #   - cron: "0 */2 * * *"
 
 concurrency:
   group: build-${{ github.ref }}
