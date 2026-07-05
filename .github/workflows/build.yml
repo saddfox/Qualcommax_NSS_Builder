@@ -30,7 +30,7 @@ env:
   DEVICE: xiaomi_ax3600
   VARIANT: edma-nss
   RELEASE_PREFIX: edma-nss
-  KEEP: "2"                     # newest releases to retain
+  KEEP: "5"                     # newest releases to retain
   FEEDS: "src-git nss https://github.com/JuliusBairaktaris/nss-packages.git;edma-nss"
 
 jobs:
