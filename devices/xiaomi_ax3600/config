@@ -164,3 +164,10 @@ CONFIG_BUSYBOX_CONFIG_DEVMEM=y
 ## reboots in the board's ramoops region; the image archives them to
 ## /root/pstore on the next boot.
 CONFIG_PACKAGE_kmod-ramoops=y
+
+## Custom Packages
+CONFIG_PACKAGE_luci-proto-wireguard=y
+CONFIG_PACKAGE_luci-app-ddns=y
+CONFIG_PACKAGE_ddns-scripts-cloudflare=y
+CONFIG_PACKAGE_igmpproxy=y
+CONFIG_PACKAGE_luci-app-udpxy=y

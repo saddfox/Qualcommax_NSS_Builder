@@ -16,8 +16,8 @@ if [ -z "$(uci -q get sqm.wan)" ]; then
 		set sqm.wan=queue
 		set sqm.wan.enabled='1'
 		set sqm.wan.interface='wan'
-		set sqm.wan.download='335000'
-		set sqm.wan.upload='165000'
+		set sqm.wan.download='900000'
+		set sqm.wan.upload='180000'
 		set sqm.wan.qdisc='fq_codel'
 		set sqm.wan.script='nss-edma.qos'
 		set sqm.wan.linklayer='none'
