@@ -7,16 +7,6 @@ name: Build PPE
 # the link a tester was given keeps working.
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - 'devices/common-ppe/**'
-      - 'devices/ppe-*/**'
-      - 'patches/feeds/ppe/**'
-      - 'scripts/**'
-      - '.github/workflows/build-ppe.yml'
-  schedule:
-    - cron: "30 3 * * *"
 
 concurrency:
   group: build-ppe
