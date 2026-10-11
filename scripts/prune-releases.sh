@@ -75,7 +75,7 @@ fi
 
 # Deleting a release drops its download counts; fold them into the lifetime
 # total first, and never delete unaccounted.
-bash "$(dirname -- "$0")/download-stats.sh" "${to_delete[@]}"
+# bash "$(dirname -- "$0")/download-stats.sh" "${to_delete[@]}"
 
 failed=0
 for tag in "${to_delete[@]}"; do
