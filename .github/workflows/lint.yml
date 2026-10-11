@@ -2,15 +2,15 @@ name: Lint
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/**'
-      - 'scripts/**'
-  pull_request:
-    paths:
-      - '.github/workflows/**'
-      - 'scripts/**'
+#   push:
+#     branches: [main]
+#     paths:
+#       - '.github/workflows/**'
+#       - 'scripts/**'
+#   pull_request:
+#     paths:
+#       - '.github/workflows/**'
+#       - 'scripts/**'
 
 permissions:
   contents: read
