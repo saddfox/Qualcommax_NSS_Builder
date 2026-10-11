@@ -22,3 +22,10 @@ CONFIG_PACKAGE_kmod-ath10k-ct-smallbuffers=n
 
 ## Hardware this board does not have.
 CONFIG_PACKAGE_kmod-phy-aquantia=n
+
+## Custom Packages
+CONFIG_PACKAGE_luci-proto-wireguard=y
+CONFIG_PACKAGE_luci-app-ddns=y
+CONFIG_PACKAGE_ddns-scripts-cloudflare=y
+CONFIG_PACKAGE_igmpproxy=y
+CONFIG_PACKAGE_luci-app-udpxy=y
