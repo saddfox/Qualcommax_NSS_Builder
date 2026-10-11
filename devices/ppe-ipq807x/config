@@ -1,3 +1,5 @@
-# PPE test images for every ipq807x board.
+# PPE test image, Xiaomi AX3600 only.
 
 CONFIG_TARGET_qualcommax_ipq807x=y
+CONFIG_TARGET_ALL_PROFILES=n
+CONFIG_TARGET_DEVICE_qualcommax_ipq807x_DEVICE_xiaomi_ax3600=y

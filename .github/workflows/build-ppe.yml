@@ -101,7 +101,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        subtarget: [ipq807x, ipq60xx]
+        subtarget: [ipq807x]
     env:
       GH_TOKEN: ${{ github.token }}
       SUBTARGET: ${{ matrix.subtarget }}
