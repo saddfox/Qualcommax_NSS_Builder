@@ -145,7 +145,6 @@ jobs:
 
           {
             echo "tag=$(draft "$RELEASE_PREFIX" "$VARIANT")"
-            echo "mesh_tag=$(draft "$MESH_RELEASE_PREFIX" "$MESH_RELEASE_PREFIX")"
           } >>"$GITHUB_OUTPUT"
 
   build:
@@ -161,14 +160,11 @@ jobs:
         # One entry per devices/<name>/ directory. The memory-profile groups exist
         # because the ath11k memory profile is compile-time and image-wide, so
         # boards can only share a build when they share a profile.
-        device: [xiaomi_ax3600, ipq807x-1g, ipq807x-512m, ipq807x-256m, ipq60xx-1g, ipq60xx-512m]
+        device: [xiaomi_ax3600]
         # The flavour is a .config fragment on top of the same overlays and the
         # same source trees; mesh needs the 11.4 firmware, which is image-wide
         # too, so it cannot share a build with the default flavour either.
-        flavour: [default, mesh]
-        include:
-          - flavour: mesh
-            config_fragment: devices/common/config.mesh
+        flavour: [default]
     env:
       GH_TOKEN: ${{ github.token }}
       DEVICE: ${{ matrix.device }}
@@ -341,13 +337,11 @@ jobs:
             # draft left behind is never pruned. Drop both and fail. No
             # --cleanup-tag: a draft's tag exists only inside the release.
             gh release delete "$TAG" --repo "$GITHUB_REPOSITORY" --yes
-            gh release delete "$MESH_TAG" --repo "$GITHUB_REPOSITORY" --yes
             echo "::error::a build group failed ($BUILD_RESULT); draft releases discarded"
             exit 1
           fi
           # --latest stays on the default flavour: mesh costs the 12.5 firmware
           # line, so it is the deliberate pick, never the one a link lands on.
-          gh release edit "$MESH_TAG" --repo "$GITHUB_REPOSITORY" --draft=false --latest=false
           gh release edit "$TAG" --repo "$GITHUB_REPOSITORY" --draft=false --latest
 
   prune:
@@ -368,4 +362,3 @@ jobs:
           # Per prefix: the two flavours are separate series, and a shared keep
           # window would drop one flavour's newest image to hold the other's.
           PREFIX="$RELEASE_PREFIX" bash scripts/prune-releases.sh
-          PREFIX="$MESH_RELEASE_PREFIX" bash scripts/prune-releases.sh
